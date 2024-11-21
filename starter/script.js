@@ -37,8 +37,8 @@ document.querySelector('.check').addEventListener('click', function(){
         document.querySelector('.number').style.width = '30rem';
 
             if (score > highScore){
-                let NewHighScore = score;
-                document.querySelector('.highscore').textContent = NewHighScore;
+                highScore = score;
+                document.querySelector('.highscore').textContent = highScore;
             }
        
         // When the number is too low
