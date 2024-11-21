@@ -17,7 +17,7 @@ let score = 20;
 
 
 document.querySelector('.check').addEventListener('click', function(){
-    const guess = Number(document.querySelector('.guess').value);
+    let guess = Number(document.querySelector('.guess').value);
     console.log(guess, typeof guess);
 
     // When ther is no input
@@ -76,10 +76,12 @@ Implement a game rest funcionality, so that the player can make a new guess! Her
 
 // Reset button
 document.querySelector('.again').addEventListener('click', function(){
-    document.querySelector('.score').textContent = score = 20;
-    document.querySelector('.number').textContent = secretNumber = '?';
+    score = 20;
+    secretNumber = Math.trunc(Math.random()*20) + 1;
+    document.querySelector('.number').textContent = '?';
     document.querySelector('.message').textContent = 'Start guessing...';
-    document.querySelector('.guess').textContent = '';
+    document.querySelector('.score').textContent = score;
     document.querySelector('body').style.backgroundColor = '#222';
     document.querySelector('.number').style.width = '15rem';
+    document.querySelector('.guess').value = '';
 })
