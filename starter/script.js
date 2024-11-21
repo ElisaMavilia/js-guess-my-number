@@ -14,6 +14,7 @@ console.log(document.querySelector('.guess').value);
 
 let secretNumber = Math.trunc(Math.random()*20) + 1;
 let score = 20;
+let highScore = 0;
 
 
 document.querySelector('.check').addEventListener('click', function(){
@@ -29,12 +30,17 @@ document.querySelector('.check').addEventListener('click', function(){
         document.querySelector('.message').textContent = 'Correct Number!'
         document.querySelector('.number').textContent = secretNumber;
 
-        score = score + 5;
+        score += 5;
         document.querySelector('.score').textContent = score;
         document.querySelector('body').style.backgroundColor = '#60b347';
 
         document.querySelector('.number').style.width = '30rem';
 
+            if (score > highScore){
+                let NewHighScore = score;
+                document.querySelector('.highscore').textContent = NewHighScore;
+            }
+       
         // When the number is too low
     } else if (guess < secretNumber){
         if (score > 1){
@@ -76,12 +82,15 @@ Implement a game rest funcionality, so that the player can make a new guess! Her
 
 // Reset button
 document.querySelector('.again').addEventListener('click', function(){
+    // Restoring game logic
     score = 20;
     secretNumber = Math.trunc(Math.random()*20) + 1;
     document.querySelector('.number').textContent = '?';
     document.querySelector('.message').textContent = 'Start guessing...';
     document.querySelector('.score').textContent = score;
+    // Restoring style
     document.querySelector('body').style.backgroundColor = '#222';
     document.querySelector('.number').style.width = '15rem';
     document.querySelector('.guess').value = '';
 })
+
